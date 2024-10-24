@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order now</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='customize.css') }}">
+</head>
+<body>
+    <!-- This is is for the navigation bar -->
+    <ul>
+        <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('Menu') }}">Menu</a></li>
+        <li><a href="{{ url_for('customize') }}">Order</a></li>
+        <li><a href="{{ url_for('check_order') }}">View</a></li>
+        <h2>MILKSHAKE Haven</h2>
+
+      </ul>
+
+
+    <div class="container">
+        <h1>Place your order</h1>
+        
+        <form action="{{ url_for('customize') }}" method="POST">
+            <label for="Base">Base:</label>
+            <select id="Base" name="Base" required>
+                <option value="" disabled selected></option>
+                <option value="Chocolate">Chocolate</option>
+                <option value="Vanilla">Vanilla</option>
+                <option value="Strawberry">Strawberry</option>
+                <option value="Coffee">Strawberry</option>
+                <option value="Matcha">Matcha</option>
+            </select>
+
+            <label for="Milk">Milk:</label>
+            <select id="Milk" name="Milk" required>
+                <option value="" disabled selected></option>
+                <option value="Whole">Whole Milk</option>
+                <option value="Almond">Almond Milk</option>
+                <option value="Oat">Oat Milk</option>
+            </select>
+
+            <label for="Topping_1">Toppings:</label>
+            <select id="Topping_1" name="Topping_1" required>
+                <option value="" disabled selected></option>
+                <option value="Chocolate_chips">Chocolate Chips</option>
+                <option value="Whipcream">Whipcream</option>
+                <option value="Oreo">Oreo</option>
+                <option value="Cookie">Cookie</option>
+                <option value="Cookie_Crumbs">Cookie Crumbs</option>
+                <option value="Chocolate_Syrup">Chocolate Syrup</option>
+                <option value="Strawberry_Syrup">Strawberry Syrup</option>
+                <option value="Caramel_Syrup">Caramel Syrup</option>
+                <option value="Popcorn">Popcorn</option>
+                <option value="Cotton_Candy">Cotton Candy</option>
+                <option value="None">None</option>
+            </select>
+
+            <label for="Topping_2">Toppings:</label>
+            <select id="Topping_2" name="Topping_2" required>
+                <option value="" disabled selected></option>
+                <option value="Chocolate_chips">Chocolate Chips</option>
+                <option value="Whipcream">Whipcream</option>
+                <option value="Oreo">Oreo</option>
+                <option value="Cookie">Cookie</option>
+                <option value="Cookie_Crumbs">Cookie Crumbs</option>
+                <option value="Chocolate_Syrup">Chocolate Syrup</option>
+                <option value="Strawberry_Syrup">Strawberry Syrup</option>
+                <option value="Caramel_Syrup">Caramel Syrup</option>
+                <option value="Popcorn">Popcorn</option>
+                <option value="Cotton_Candy">Cotton Candy</option>
+                <option value="None">None</option>
+            </select>
+
+            <label for="Topping_3">Toppings:</label>
+            <select id="Topping_3" name="Topping_3" required>
+                <option value="" disabled selected></option>
+                <option value="Chocolate_chips">Chocolate Chips</option>
+                <option value="Whipcream">Whipcream</option>
+                <option value="Oreo">Oreo</option>
+                <option value="Cookie">Cookie</option>
+                <option value="Cookie_Crumbs">Cookie Crumbs</option>
+                <option value="Chocolate_Syrup">Chocolate Syrup</option>
+                <option value="Strawberry_Syrup">Strawberry Syrup</option>
+                <option value="Caramel_Syrup">Caramel Syrup</option>
+                <option value="Popcorn">Popcorn</option>
+                <option value="Cotton_Candy">Cotton Candy</option>
+                <option value="None">None</option>
+            </select>
+
+
+            
+            
+
+            <label for="Size">Size:</label>
+            <select id="Size" name="Size" required>
+                <option value="" disabled selected></option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+            </select>
+
+            <label for="Name">Names:</label>
+            <option value="" disabled selected></option>
+            <input type="text" id="Name" name="Name" required>
+
+            <button type="submit">Place Order</button>
+        </form>
+
+        <!-- Flash message for successful order -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <a href="{{ url_for('check_order') }}" class="unique-link">View Order</a>
+    </div>
+
+
+</body>
+</html>

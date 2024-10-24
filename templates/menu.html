@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='menu.css') }}">
+</head>
+<body>
+ <!-- This is is for the navigation bar -->
+    <ul>
+        <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('Menu') }}">Menu</a></li>
+        <li><a href="{{ url_for('customize') }}">Order</a></li>
+        <li><a href="{{ url_for('check_order') }}">View</a></li>
+        <h2>MILKSHAKE Haven</h2>
+
+      </ul>
+
+
+
+<div class="container">
+    <h1>Our Menu</h1>
+    <h3>Yummy yum yum in my tummy tum tum</h2>
+    
+
+
+</div>
+
+
+<!-- Images found in google -->
+<!-- Displays the images in a gallery format-->
+
+<div class="gallery">
+      <img src="{{ url_for('static', filename='/Images/Image3.jpeg') }}" alt="Chocolate Milkshake">
+    <div>Delicious chocolate milkshake</div>
+</div>
+
+<div class="gallery">
+      <img src="{{ url_for('static', filename='/Images/Image4.jpeg') }}" alt="Strawberry Milkshake">
+    <div>Delicious strawberry milkshake</div>
+</div>
+
+<div class="gallery">
+    <img src="{{ url_for('static', filename='/Images/Image5.jpg') }}" alt="Strawberry Milkshake">
+  <div>Delicious Caramel milkshake</div>
+</div>
+
+
+<div class="gallery">
+    <img src="{{ url_for('static', filename='/Images/Image6.jpg') }}" alt="Strawberry Milkshake">
+  <div>Delicious Oreo milkshake</div>
+</div>
+
+<div class="gallery">
+    <img src="{{ url_for('static', filename='/Images/Image7.jpg') }}" alt="Strawberry Milkshake">
+    <div>Delicious Matcha milkshake</div>
+</div>
+
+<div class="gallery">
+    <img src="{{ url_for('static', filename='/Images/Image8.jpg') }}" alt="Strawberry Milkshake">
+    <div>Delicious Coffee milkshake</div>
+</div>
+
+</body>
+</html>

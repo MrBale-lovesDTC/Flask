@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Milkshake Order</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='order.css') }}">
+</head>
+<body>
+        <ul>
+            <!-- This is is for the navigation bar -->
+            <li><a class="active" href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('Menu') }}">Menu</a></li>
+            <li><a href="{{ url_for('customize') }}">Order</a></li>
+            <li><a href="{{ url_for('check_order') }}">View</a></li>
+            <h2>MILKSHAKE Haven</h2>
+    
+          </ul>
+    
+
+
+
+    <div class="container">
+        <h1>Find Your Milkshake Order</h1>
+
+        <!-- Flash messages for success/error -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Form for customer to search for their custom order -->
+        <form action="{{ url_for('check_order') }}" method="POST">
+            <label for="Name">Enter Your Name:</label>
+            <input type="text" id="Name" name="Name" required>
+            <button type="submit">Find Order</button>
+        </form>
+
+        <!-- Show the custom order if found -->
+        {% if custom_order %}
+            <div class="order-details">
+                <h3>Order for {{ customer_name }}</h2>
+                <p><strong>Base:</strong> {{ custom_order['Base'] }}</p>
+                <p><strong>Milk:</strong> {{ custom_order['Milk'] }}</p>
+                <p><strong>Topping 1:</strong> {{ custom_order['Topping_1'] }}</p>
+                <p><strong>Topping 2:</strong> {{ custom_order['Topping_2'] }}</p>
+                <p><strong>Topping 3:</strong> {{ custom_order['Topping_3'] }}</p>
+                <p><strong>Size:</strong> {{ custom_order['Size'] }}</p>
+            </div>
+        {% elif customer_searched %}
+            <p>No custom order found for {{ customer_name }}. Please place an order.</p>
+        {% endif %}
+
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </div>
+</body>
+</html>
